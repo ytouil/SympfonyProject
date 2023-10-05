@@ -18,10 +18,7 @@ class GuitarCrudController extends AbstractCrudController
         return [
             Field\IdField::new('id')->onlyOnIndex(),
             Field\TextField::new('modelName', 'Model Name'),
-            Field\TextField::new('brand'),
-            Field\IntegerField::new('year'),
             Field\TextareaField::new('description'),
-            Field\ImageField::new('image')->onlyOnForms(),
             Field\AssociationField::new('inventory'),
         ];
     }

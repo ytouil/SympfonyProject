@@ -4,7 +4,10 @@
 
 namespace App\Entity;
 
+use App\Repository\InventoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: "App\Repository\InventoryRepository")]
 #[ORM\Table(name: "inventories")]
@@ -80,5 +83,11 @@ class Inventory
         }
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        // You can change this to return any property of the user, e.g., email, full_name, etc.
+        return $this->name;
+
     }
 }

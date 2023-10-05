@@ -4,8 +4,9 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Repository\UserRepository;
 #[ORM\Entity(repositoryClass: "App\Repository\UserRepository")]
 #[ORM\Table(name: "users")]
 class User
@@ -18,12 +19,6 @@ class User
 
     #[ORM\Column(type: "string", length: 255)]
     private string $full_name;
-
-    #[ORM\Column(type: "string", length: 255, nullable: true)]
-    private ?string $picture = null;
-
-    #[ORM\Column(type: "string", length: 255)]
-    private string $password;
 
     #[ORM\Column(type: "text", nullable: true)]
     private ?string $bio = null;
@@ -60,27 +55,6 @@ class User
         return $this;
     }
 
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(?string $picture): self
-    {
-        $this->picture = $picture;
-        return $this;
-    }
-
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-        return $this;
-    }
 
     public function getBio(): ?string
     {
@@ -108,5 +82,11 @@ class User
         }
     
         return $this;
+    }
+    public function __toString(): string
+    {
+        // You can change this to return any property of the user, e.g., email, full_name, etc.
+        return $this->full_name;
+
     }
 }

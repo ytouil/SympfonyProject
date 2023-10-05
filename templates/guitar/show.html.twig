@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guitar Details{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .guitar-detail-wrapper { 
+            margin: 1em auto; 
+            max-width: 800px; 
+            width: 95%; 
+            font: 18px/1.5 sans-serif; 
+        }
+        .guitar-detail-wrapper code { 
+            background: #F5F5F5; 
+            padding: 2px 6px; 
+        }
+        .guitar-detail {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="guitar-detail-wrapper">
+    <h1>{{ guitar.modelName }}</h1>
+
+    <div class="guitar-detail">
+        <h3>Description:</h3>
+        <p>{{ guitar.description }}</p>
+
+        <h3>Inventory:</h3>
+        <p>Belongs to Inventory ID: {{ guitar.inventory.id }}</p>
+    </div>
+</div>
+{% endblock %}

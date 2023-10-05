@@ -13,62 +13,54 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $usersData = [
-            ['email' => 'john@example.com', 'fullName' => 'John Doe', 'password' => 'password123'],
-            ['email' => 'alice@example.com', 'fullName' => 'Alice Smith', 'password' => 'password456'],
-            ['email' => 'bob@example.com', 'fullName' => 'Bob Johnson', 'password' => 'password789'],
+            ['email' => 'john@example.com', 'fullName' => 'John Doe'],
+            ['email' => 'alice@example.com', 'fullName' => 'Alice Smith'],
+            ['email' => 'bob@example.com', 'fullName' => 'Bob Johnson'],
         ];
 
         foreach ($usersData as $userData) {
-            yield from $this->loadUser($manager, $userData);
+            $this->loadUser($manager, $userData);
         }
 
         $manager->flush();
     }
 
-    private function loadUser(ObjectManager $manager, array $userData): \Generator
+    private function loadUser(ObjectManager $manager, array $userData)
     {
         $user = new User();
         $user->setEmail($userData['email']);
-        $user->setFullName($userData['fullName']); // Setting fullName instead of firstName and lastName
-        $user->setPassword($userData['password']); // Directly setting the password without encoding
+        $user->setFullName($userData['fullName']);
 
         $manager->persist($user);
 
-        yield $user;
-
-        yield from $this->loadInventory($manager, $user);
+        $this->loadInventory($manager, $user);
     }
 
-    private function loadInventory(ObjectManager $manager, User $user): \Generator
+    private function loadInventory(ObjectManager $manager, User $user)
     {
         $inventory = new Inventory();
         $inventory->setUser($user);
-        // Add more properties if needed...
+        $inventory->setName($user->getFullName() . "'s Inventory");
 
         $manager->persist($inventory);
 
-        yield $inventory;
-
         $guitarsData = [
-            ['modelName' => 'Stratocaster', 'brand' => 'Fender'],
-            ['modelName' => 'Les Paul', 'brand' => 'Gibson'],
+            ['modelName' => 'Stratocaster', 'description' => 'A classic Fender guitar'],
+            ['modelName' => 'Les Paul', 'description' => 'A classic Gibson guitar'],
         ];
 
         foreach ($guitarsData as $guitarData) {
-            yield from $this->loadGuitar($manager, $inventory, $guitarData);
+            $this->loadGuitar($manager, $inventory, $guitarData);
         }
     }
 
-    private function loadGuitar(ObjectManager $manager, Inventory $inventory, array $guitarData): \Generator
+    private function loadGuitar(ObjectManager $manager, Inventory $inventory, array $guitarData)
     {
         $guitar = new Guitar();
         $guitar->setInventory($inventory);
         $guitar->setModelName($guitarData['modelName']);
-        $guitar->setBrand($guitarData['brand']);
-        // Add more properties if needed...
+        $guitar->setDescription($guitarData['description']);
 
         $manager->persist($guitar);
-
-        yield $guitar;
     }
 }

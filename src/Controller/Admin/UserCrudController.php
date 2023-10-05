@@ -20,7 +20,6 @@ class UserCrudController extends AbstractCrudController
             Field\TextField::new('email'),
             Field\TextField::new('full_name', 'Full Name'),
             Field\ImageField::new('picture')->onlyOnForms(),
-            Field\PasswordField::new('password'),
             Field\TextareaField::new('bio'),
             Field\AssociationField::new('inventory'),
         ];

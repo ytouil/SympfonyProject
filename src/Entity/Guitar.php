@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Repository\GuitarRepository;
 #[ORM\Entity(repositoryClass: "App\Repository\GuitarRepository")]
 #[ORM\Table(name: "guitars")]
 class Guitar
@@ -14,17 +15,8 @@ class Guitar
     #[ORM\Column(type: "string", length: 255)]
     private string $modelName;
 
-    #[ORM\Column(type: "string", length: 255)]
-    private string $brand;
-
-    #[ORM\Column(type: "integer")]
-    private int $year;
-
     #[ORM\Column(type: "text")]
     private string $description;
-
-    #[ORM\Column(type: "string", length: 255)]
-    private string $image;
 
     #[ORM\ManyToOne(targetEntity: Inventory::class, inversedBy: "guitars")]
     #[ORM\JoinColumn(nullable: false)]
@@ -46,28 +38,6 @@ class Guitar
         return $this;
     }
 
-    public function getBrand(): string
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(string $brand): self
-    {
-        $this->brand = $brand;
-        return $this;
-    }
-
-    public function getYear(): int
-    {
-        return $this->year;
-    }
-
-    public function setYear(int $year): self
-    {
-        $this->year = $year;
-        return $this;
-    }
-
     public function getDescription(): string
     {
         return $this->description;
@@ -76,17 +46,6 @@ class Guitar
     public function setDescription(string $description): self
     {
         $this->description = $description;
-        return $this;
-    }
-
-    public function getImage(): string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
         return $this;
     }
 

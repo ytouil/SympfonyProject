@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table class="inventory-list">
+    <thead>
+        <!-- ... you might have table headers here ... -->
+    </thead>
+    <tbody>
+        {% for inventory in inventories %}
+            <tr>
+                <td>
+                    <a href="{{ path('app_guitars_list', {'inventoryId': inventory.id}) }}">
+                        {{ inventory.id }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('app_guitars_list', {'inventoryId': inventory.id}) }}">
+                        {{ inventory.name }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('app_guitars_list', {'inventoryId': inventory.id}) }}">
+                        {{ inventory.user.fullName }}
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No inventories found</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,49 @@
+TODO List - Project Checklist
+
+1. [X] Understand project requirements (MANDATORY) - TP 3
+2. [X] Initialize Symfony project (MANDATORY) - TP 3
+3. [X] Manage source code with Git (RECOMMENDED)
+4. [X] Add the data model's entities: User, Inventory, and Guitar (MANDATORY) - TP 3
+   - [X] User entity
+   - [X] Inventory entity
+   - [X] Guitar entity
+   - [X] 1-1 Relationship between User and Inventory
+   - [X] 1-N Relationship between Inventory and Guitar
+5. [X] Add test data loadable with fixtures (MANDATORY) - TP 3
+   - [X] For User
+   - [X] For Inventory
+   - [X] For Guitar
+   - [ ] ...
+6. [X] Add EasyAdmin interface in the back-office with CRUD for User, Inventory, and Guitar
+   - [X] CRUD User (MANDATORY) - TP 3/4
+   - [X] CRUD Inventory (MANDATORY) - TP 3/4
+   - [X] CRUD Guitar (MANDATORY) - TP 3/4
+   - [X] Navigation between User and Inventory (OPTIONAL) - TP 5
+   - [X] Navigation between Inventory and its Guitars (OPTIONAL) - TP 5
+7. [X] Creation of "front-office" pages to consult Inventories and Guitars
+   - [X] Consult the list of all Inventories initially (MANDATORY) - TP 4
+   - [X] Consult a specific Inventory from the list (MANDATORY) - TP 4
+   - [X] Navigate from an Inventory to its Guitars (MANDATORY) - TP 4
+
+=======================================================================================================
+===========================================[ First delivery ]===========================================
+=======================================================================================================
+
+11. [ ] Integrate CSS styling with Bootstrap in Twig templates (MANDATORY) - TP 6
+12. [ ] Integrate navigation menus (MANDATORY)
+13. [ ] Add CRUD functions in the front-office for User (MANDATORY)
+14. [ ] Add CRUD functions in the front-office for Inventory (MANDATORY)
+15. [ ] Add CRUD functions in the front-office for Guitar (MANDATORY)
+16. [ ] Consult Guitars from public Inventories (MANDATORY)
+17. [ ] Add CRUD controller for Users (MANDATORY)
+18. [ ] Consult only a specific User's Inventories in the front-office (MANDATORY)
+19. [ ] Contextualize Guitar creation based on the Inventory (MANDATORY)
+20. [ ] Add Users to the data model and link User - User details (MANDATORY) - TP 9
+21. [ ] Add authentication (MANDATORY) - TP 9
+22. [ ] Protect routes reserved for Users (OPTIONAL) - TP 9
+23. [ ] Protect data access only to its owners (OPTIONAL) - TP 9
+24. [ ] Contextualize data loading based on the logged-in User (OPTIONAL)
+25. [ ] Manage deletions (OPTIONAL)
+26. [ ] Add image upload management for Guitar photos (OPTIONAL) - TP 8
+27. [ ] Use flash messages for CRUD operations (OPTIONAL)
+28. [ ] Add a bookmark/cart management in the front-office (OPTIONAL) - TP 9
